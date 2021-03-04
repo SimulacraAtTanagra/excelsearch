@@ -12,8 +12,8 @@ def main(directory_in_str,term):
     os.chdir(directory)                                 #navigate to directory specified
     for file in os.listdir(directory):                  #iterates over all the files here
         filename = os.fsdecode(file)                    #specifies filename from file
-        if filename.endswith('xlsx') or filename.endswith('xls'):
-            fullpath =f'{directory_in_str}\\{filename}'
+        if filename[:-4] in ['xlsx','.xls']:
+            fullpath =os.path.join(directory_in_str,filename)
             try:
                 filesearch(fullpath,term)
             except:
